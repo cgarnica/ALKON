@@ -1,0 +1,92 @@
+package com.quasar.alkon;
+
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBar;
+import android.support.v4.app.Fragment;
+import android.app.Activity;
+import android.content.Context;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.os.Build;
+
+public class MainActivity extends Activity implements LocationListener {
+
+	private LocationManager locationManager;
+	private LocationListener locationListener;
+	private Context context;
+	private TextView txtLat;
+	String lat;
+	String provider;
+	private String latitude, longitude;
+	private boolean gpsEnable, networkEnable;
+		
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		txtLat = (TextView)findViewById(R.id.textview1);
+		
+		locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+		locationManager.requestLocationUpdates(locationManager.GPS_PROVIDER, 0, 0, this);
+	}
+
+	public void onLocationChanged(Location location){
+		txtLat = (TextView)findViewById(R.id.textview1);
+		txtLat.setText("Latitud = " + location.getLatitude() + ", Longitud = " + location.getLongitude());
+	}
+	
+	public void onProviderDisable(String provider){
+		Log.d("Latitud", "disable");
+	}
+	
+	public void onProviderEnable(String provider){
+		Log.d("Latitud", "enable");
+	}
+	
+	public void onStatusChanged(String provider, int status, Bundle extras){
+		Log.d("Latitud", "status");
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onProviderEnabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onProviderDisabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

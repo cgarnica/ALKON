@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="#111111"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="LoginActivity">
+    
+    <TextView
+        android:id="@+id/encabezado"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/login"
+        android:layout_alignRight="@+id/login"
+        android:hint="@string/title_activity_main"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/white"
+        android:textSize="25sp" />
+
+    <EditText android:id="@+id/usuario"
+        style="@style/textboxform"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:hint="@string/usuario"
+        android:layout_below="@id/encabezado"
+        android:inputType="text"
+        android:background="@drawable/rounded_edittext">
+    <requestFocus/>
+    </EditText>
+
+    <!--<EditText android:id="@+id/password"
+        style="@style/textboxform"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/usuario"
+        android:layout_margin="20dp"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:background="@drawable/rounded_edittext"/>-->
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:layout_margin="50dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:layout_alignParentBottom="true"
+        android:text="@string/login_in" 
+        android:textColor="@android:color/white"/>
+</RelativeLayout>
